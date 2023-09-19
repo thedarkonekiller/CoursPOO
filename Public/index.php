@@ -1,10 +1,14 @@
 <?php
 
+use App\Autoloader;
 use App\Controllers\ConducteurController;
 use App\Controllers\VoitureController;
 
-    require_once '../Controllers/VoitureController.php';
-    require_once '../Controllers/ConducteurController.php';
+// On charge le fichier Autoloader
+require_once '../autoloader.php';
+// On charge la méthode statique
+Autoloader::register();
+
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +44,18 @@ use App\Controllers\VoitureController;
     <div class="flex">
         <?= $c1->getConductor() ?>
         <?= $c2->getConductor() ?>
+    </div> 
+    <div class="flex">
+        <?php
+            $c1->setFirstname("toto");
+            echo $c1->getConductor()
+        ?>
+    </div>
+    <div class="flex">
+        <?php
+            echo $v3->getInfos();
+            echo $v3->setAllAttributes("pigeot", "Marron", 200);
+        ?>
     </div>
 </body>
 </html>

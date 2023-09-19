@@ -4,10 +4,17 @@ namespace App\Controllers;
 
 class ConducteurController
 {
-    public $lastname;
-    public $firstname;
-    public $age;
+    private $lastname;
+    private $firstname;
+    private $age;
 
+    /**
+     * Conductor Constructor
+     *
+     * @param string $lname
+     * @param string $fname
+     * @param integer $age
+     */
     public function __construct(string $lname, string $fname, int $age)
     {
         if ($age >= 20 && $age < 66) {
@@ -20,6 +27,12 @@ class ConducteurController
         }
     }
 
+    /**
+     * Get all infos of a conductor
+     * (Firstname, Lastname and Age)
+     *
+     * @return void
+     */
     public function getConductor() {
         if($this->lastname != null) {
             $result = "";
@@ -31,10 +44,7 @@ class ConducteurController
     
             return $result;
         }
-
     }
-
-
 
     /**
      * Get the value of lastname

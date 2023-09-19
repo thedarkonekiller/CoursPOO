@@ -4,13 +4,15 @@ namespace App\Controllers;
 
 
 /**
- * Define Voiture object
+ * Define Avion object
  */
-class VoitureController
+class AvionController
 {
     private string $marque;
     private string $couleur;
     private int $puissance;
+    private string $lieuDepart;
+    private string $destination;
 
     /**
      * Constructor
@@ -19,11 +21,12 @@ class VoitureController
      * @param string $coul
      * @param integer $puiss
      */
-    public function __construct(string $mar, string $coul, int $puiss)
+    public function __construct(string $mar, string $coul, int $puiss, string $lieuAssemblage = "Paris")
     {
         $this->marque = $mar;
         $this->couleur = $coul;
         $this->puissance = $puiss;
+        $this->lieuDepart = $lieuAssemblage;
     }
 
     public function getInfos()
@@ -44,7 +47,20 @@ class VoitureController
         $this->setPuissance($p);
         
         return $this->getInfos();
-    } 
+    }
+
+    public function setTrajet($arr) {
+        if($this->destination === null) {
+            $this->lieuDepart = $this->lieuDepart;
+        } else {
+            $this->lieuDepart = $this->destination;
+        }
+        $this->destination = $arr;
+        $msg = "<p>L'avion est parti de ".$this->lieuDepart." et va à ".$this->destination."</p>";
+        $this->lieuDepart = $arr;
+
+        return $msg;
+    }
 
     /**
      * Get the value of marque
@@ -105,6 +121,46 @@ class VoitureController
     public function setPuissance($puissance)
     {
         $this->puissance = $puissance;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lieuDepart
+     */ 
+    public function getLieuDepart()
+    {
+        return $this->lieuDepart;
+    }
+
+    /**
+     * Set the value of lieuDepart
+     *
+     * @return  self
+     */ 
+    public function setLieuDepart($lieuDepart)
+    {
+        $this->lieuDepart = $lieuDepart;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of destination
+     */ 
+    public function getDestination()
+    {
+        return $this->destination;
+    }
+
+    /**
+     * Set the value of destination
+     *
+     * @return  self
+     */ 
+    public function setDestination($destination)
+    {
+        $this->destination = $destination;
 
         return $this;
     }
