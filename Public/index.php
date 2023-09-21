@@ -57,5 +57,17 @@ Autoloader::register();
             echo $v3->setAllAttributes("pigeot", "Marron", 200);
         ?>
     </div>
+    <div class="flex">
+        <?php
+            $userC = new \App\Controllers\UserController('42', 'Florian');
+            echo $userC;
+            ?>
+    </div>
+    <div>
+        <?php
+            $user = new \App\Models\User();
+
+        ?>
+    </div>
 </body>
 </html>
